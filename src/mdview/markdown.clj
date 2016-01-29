@@ -6,8 +6,6 @@
 (defn fetch-page [url]
   (eh/html-resource (URL. url)))
 
-(def p (fetch-page "https://clojuredocs.org/clojure.core/defn-"))
-
 (defn parse-string [text]
   (eh/html-content text))
 
@@ -17,4 +15,4 @@
     #{[:h1] [:h2] [:h3]}))
 
 (defn render-markdown [text]
-  (md/md-to-html-string text))
+  (md/md-to-html-string text :heading-anchors true))

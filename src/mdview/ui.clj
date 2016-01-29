@@ -1,6 +1,7 @@
 (ns mdview.ui
   (:require [seesaw.core :as sw]
-            [seesaw.tree :as swt])
+            [seesaw.tree :as swt]
+            [seesaw.selector :as sws])
   (:import (java.io File)))
 
 (def file-tree-model
@@ -30,7 +31,7 @@
       (sw/border-panel
         :north (sw/scrollable (sw/tree :id :file-tree :model file-tree-model ))
         :south (sw/scrollable (sw/tree :id :outline-tree :model outline-tree-model )))
-      (sw/editor-pane :content-type "text/html" :editable? false)
+      (sw/editor-pane :id content-pane :content-type "text/html" :editable? false)
       :divider-location 1/3)
     :south (sw/label :id :status :text "状态")))
 
